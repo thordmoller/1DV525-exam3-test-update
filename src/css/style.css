@@ -1,0 +1,12 @@
+body{
+    background-image:  url("../image/wp153122.jpg");
+    margin: 0;
+}
+
+nav{
+    position: fixed;
+    bottom: 0;
+    background-color: #2660DD;
+    height: 40px;
+    width: 100%;
+}
