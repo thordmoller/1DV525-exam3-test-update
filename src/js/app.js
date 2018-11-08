@@ -1,1 +1,3 @@
-console.log('Hello World!')
+import PwdWindow from './PwdWindow.js'
+
+let window = new PwdWindow()
