@@ -1,4 +1,3 @@
-import PwdWindow from './PwdWindow.js'
+import Desktop from './Desktop.js'
 
-let window = new PwdWindow(1)
-window.displayWindow()
+let d = new Desktop()

@@ -1,7 +1,7 @@
 export default class PwdWindow {
   constructor (id) {
-    this.left = 10 * id
-    this.top = 10 * id
+    this.left = (id - 1) * 10
+    this.top = (id - 1) * 10
   }
 
   displayWindow () {
