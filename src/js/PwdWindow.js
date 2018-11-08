@@ -1,12 +1,10 @@
 export default class PwdWindow {
-  constructor (left, top) {
-    this.left = left
-    this.top = top
-    this.displayWindow()
+  constructor (id) {
+    this.left = 10 * id
+    this.top = 10 * id
   }
 
   displayWindow () {
-    console.log(this.left + this.right)
     let template = document.querySelector('#window')
     let clone = template.content.cloneNode(true)
     let container = clone.querySelectorAll('.Window')[0]
