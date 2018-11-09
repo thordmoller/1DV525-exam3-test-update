@@ -4,6 +4,8 @@ nav { position: fixed; bottom: 0; background-color: #2660DD; height: 40px; width
 
 .Window { min-width: 200px; border: 2px solid #0059F4; display: inline-block; position: absolute; }
 .Window .WindowNav { padding: 10px; background-color: #0059F4; color: white; }
+.Window .WindowNav .WindowClose { height: 30px; width: 30px; position: absolute; right: 4px; top: 3px; background-image: url("../image/close1.png"); background-size: 30px 30px; }
+.Window .WindowNav .WindowClose:hover { background-image: url("../image/close2.png"); cursor: pointer; }
 .Window .WindowContent { padding: 10px; background-color: white; width: 400px; height: 300px; }
 
 /*# sourceMappingURL=style.css.map */
