@@ -8,4 +8,6 @@ nav { position: fixed; bottom: 0; background-color: #004bce; height: 40px; width
 .Window .WindowNav .WindowClose:hover { background-image: url("../image/close2.png"); cursor: pointer; }
 .Window .WindowContent { padding: 10px; background-color: white; width: 400px; height: 300px; border: 1px solid navy; }
 
+.Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
+
 /*# sourceMappingURL=style.css.map */

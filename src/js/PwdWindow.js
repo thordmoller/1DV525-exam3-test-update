@@ -7,6 +7,8 @@ export default class PwdWindow {
     this.id = id
     this.left = (id - 1) * 10
     this.top = (id - 1) * 10
+    this.element = undefined
+    this.displayWindow()
   }
   /** Makes the window appear in the DOM */
   displayWindow () {
@@ -16,11 +18,16 @@ export default class PwdWindow {
     container.setAttribute('id', 'w' + this.id)
     container.style.left = this.left + 'px'
     container.style.top = this.top + 'px'
+    container.style.zIndex = this.id
     document.querySelector('body').appendChild(clone)
+    this.element = container
   }
   /** Removes the window from DOM */
   deleteWindow () {
     let window = document.querySelector('#w' + this.id)
     document.querySelector('body').removeChild(window)
+  }
+  makeInactive () {
+    this.element.classList.add('Inactive')
   }
 }

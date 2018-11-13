@@ -38,9 +38,6 @@ nav{
             cursor: pointer;
         }
     }
-    .Window * {
-        user-select: none;
-    }
 
     .WindowContent{
         padding: 10px;
@@ -49,4 +46,11 @@ nav{
         height: 300px;   
         border: 1px solid navy;
     }
+}
+$inactiveColor : rgb(104, 160, 255);
+.Inactive{
+    background-color: $inactiveColor !important;
+    border-color: $inactiveColor !important;
+}
+.InactiveBorder{
 }
