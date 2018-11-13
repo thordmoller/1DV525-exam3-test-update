@@ -7,13 +7,13 @@ body{
 nav{
     position: fixed;
     bottom: 0;
-    background-color: #2660DD;
+    background-color: rgb(0, 75, 206);
     height: 40px;
     width: 100%;
+    border-top: 1px solid navy;
 }
 
 .Window{
-
     min-width: 200px;
     border: 2px solid #0059F4;
     outline: 1px solid navy;
@@ -37,6 +37,9 @@ nav{
             background-image: url('../image/close2.png') ;
             cursor: pointer;
         }
+    }
+    .Window * {
+        user-select: none;
     }
 
     .WindowContent{

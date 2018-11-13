@@ -1,6 +1,6 @@
 body { background-image: url("../image/wp153122.jpg"); margin: 0; font-family: Arial, Helvetica, sans-serif; }
 
-nav { position: fixed; bottom: 0; background-color: #2660DD; height: 40px; width: 100%; }
+nav { position: fixed; bottom: 0; background-color: #004bce; height: 40px; width: 100%; border-top: 1px solid navy; }
 
 .Window { min-width: 200px; border: 2px solid #0059F4; outline: 1px solid navy; display: inline-block; position: absolute; }
 .Window .WindowNav { padding: 10px; background-color: #0059F4; color: white; }
