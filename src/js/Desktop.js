@@ -36,8 +36,6 @@ export default class Desktop {
         windowNode = element.parentNode
         let window = this.getWindowFromElement(windowNode)
         if (element.classList.contains('Inactive')) {
-          element.classList.remove('Inactive')
-          windowNode.classList.remove('Inactive')
           this.setActiveWindow(window)
         }
 
@@ -69,10 +67,9 @@ export default class Desktop {
     this.windows.push(new PwdWindow(this.windowAmount))
     let w = this.windows[this.windows.length - 1]
     this.setActiveWindow(w)
-    //w.displayWindow()
 
     /** finds given window object in windows array and deletes it
-     * @param {PwdWindow} window - The window to be deleted 1
+     * @param {PwdWindow} window - The window to be deleted
      */
     let deleteFromList = function (window) {
       for (let i = 0; i < this.windows.length; i++) {
@@ -87,21 +84,27 @@ export default class Desktop {
     element.querySelectorAll('.WindowClose')[0].addEventListener('click', function () { deleteFromList(w); w.deleteWindow() })
     console.log(this.windows)
   }
+  /** sets a specified window active and makes the curren one inactive
+   * @param {PwdWindow} window - The window to become active
+   */
   setActiveWindow (window) {
-    let oldZ = 0
+    window.makeActive()
+    let oldZ = 0 // Z-index of current active window
     if (this.activeWindow !== undefined) {
       oldZ = parseInt(this.activeWindow.element.style.zIndex)
-      this.activeWindow.element.classList.add('Inactive')
-      this.activeWindow.element.querySelectorAll('.WindowNav')[0].classList.add('Inactive')
+      this.activeWindow.makeInactive()
     }
     window.element.style.zIndex = oldZ + 1
     this.activeWindow = window
   }
+  /** Returns window object from html element
+   * @param element - The window element
+   */
   getWindowFromElement (element) {
     let window
     let id = element.getAttribute('id')
     for (let i = 0; i < this.windows.length; i++) {
-      if (this.windows[i].id == id.substring(1)) {
+      if (this.windows[i].id === parseInt(id.substring(1))) {
         window = this.windows[i]
         break
       }

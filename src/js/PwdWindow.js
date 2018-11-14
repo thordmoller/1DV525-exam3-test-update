@@ -29,5 +29,10 @@ export default class PwdWindow {
   }
   makeInactive () {
     this.element.classList.add('Inactive')
+    this.element.querySelectorAll('.WindowNav')[0].classList.add('Inactive')
+  }
+  makeActive () {
+    this.element.classList.remove('Inactive')
+    this.element.querySelectorAll('.WindowNav')[0].classList.remove('Inactive')
   }
 }
