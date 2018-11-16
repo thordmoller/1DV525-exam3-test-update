@@ -19,6 +19,7 @@ export default class Desktop {
       // the top and left css values before dragging window
       let initLeft
       let initTop
+      e.preventDefault() // prevent text highlight
 
       /** moves a window */
       let mouseMove = function (e) {
@@ -44,19 +45,20 @@ export default class Desktop {
         initTop = parseInt(windowNode.style.top)
         document.addEventListener('mousemove', mouseMove)
         document.addEventListener('mouseup', mouseUp.bind(this))
-        e.preventDefault() // prevent text highlight on drag
       }
       if (element.classList.contains('WindowClose')) {
         windowNode = element.parentNode.parentNode
         let window = this.getWindowFromElement(windowNode)
         this.disposeWindow(window)
       }
+      if (element.classList.contains('ChatButton')) {
+        this.openWindow(new Chat(this.windows.length + 1))
+      }
     }.bind(this)
   }
 
   /** Starts listener events */
   waitForAction () {
-    document.querySelector('#button').addEventListener('click', function () { this.openWindow(new Chat(this.windows.length + 1)) }.bind(this))
     document.addEventListener('mousedown', this.mouseDown)
   }
   /** Creates and displays a new window */
