@@ -3,7 +3,9 @@ import PwdWindow from './PwdWindow'
 export default class Chat extends PwdWindow {
   constructor (id) {
     super(id)
-    console.log(this.element)
+    this.width = '200'
+    this.title = 'Chat application'
+    this.displayWindow()
     this.loadApp()
   }
 
@@ -13,7 +15,5 @@ export default class Chat extends PwdWindow {
     let container = this.element.querySelectorAll('.WindowContent')[0]
 
     container.appendChild(clone)
-
-
   }
 }

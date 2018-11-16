@@ -19,7 +19,7 @@ nav{
     outline: 1px solid navy;
     display:inline-block;
     position: absolute;
-
+    
     .WindowNav{
         padding:10px;
         background-color: #0059F4;
@@ -41,9 +41,7 @@ nav{
 
     .WindowContent{
         padding: 10px;
-        background-color: white;
-        width: 400px;
-        height: 300px;   
+        background-color: white; 
         border: 1px solid navy;
     }
 }
@@ -51,6 +49,4 @@ $inactiveColor : rgb(104, 160, 255);
 .Inactive{
     background-color: $inactiveColor !important;
     border-color: $inactiveColor !important;
-}
-.InactiveBorder{
 }

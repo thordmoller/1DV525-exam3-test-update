@@ -6,7 +6,7 @@ nav { position: fixed; bottom: 0; background-color: #004bce; height: 40px; width
 .Window .WindowNav { padding: 10px; background-color: #0059F4; color: white; }
 .Window .WindowNav .WindowClose { height: 30px; width: 30px; position: absolute; right: 4px; top: 3px; background-image: url("../image/close1.png"); background-size: 30px 30px; }
 .Window .WindowNav .WindowClose:hover { background-image: url("../image/close2.png"); cursor: pointer; }
-.Window .WindowContent { padding: 10px; background-color: white; width: 400px; height: 300px; border: 1px solid navy; }
+.Window .WindowContent { padding: 10px; background-color: white; border: 1px solid navy; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 
