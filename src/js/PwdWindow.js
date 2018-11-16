@@ -11,6 +11,7 @@ export default class PwdWindow {
     this.height = undefined
     this.width = undefined
     this.title = 'Title'
+    this.iconUrl = undefined
   }
   /** Makes the window appear in the DOM */
   displayWindow () {
@@ -22,6 +23,7 @@ export default class PwdWindow {
     container.style.top = this.top + 'px'
     container.style.zIndex = this.id
     let nav = container.querySelectorAll('.WindowNav')[0]
+    
     nav.appendChild(document.createTextNode(this.title))
     let content = container.querySelectorAll('.WindowContent')[0]
     content.style.height = this.height + 'px'

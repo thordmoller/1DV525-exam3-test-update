@@ -6,7 +6,8 @@ nav .AppButton:hover { cursor: pointer; background-position: -40px; }
 nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 
 .Window { min-width: 200px; border: 2px solid #0059F4; outline: 1px solid navy; display: inline-block; position: absolute; }
-.Window .WindowNav { padding: 10px; background-color: #0059F4; color: white; }
+.Window .WindowNav { height: 40px; background-color: #0059F4; color: white; }
+.Window .WindowNav .WindowIcon { height: 30px; width: 30px; float: left; position: relative; margin-top: 2px; margin: 0px 2px; background-image: url("../image/double-chat-sprite.png"); background-size: 60px 30px; }
 .Window .WindowNav .WindowClose { height: 30px; width: 30px; position: absolute; right: 4px; top: 3px; background-image: url("../image/close-sprite.png"); background-size: 60px 30px; }
 .Window .WindowNav .WindowClose:hover { background-position: -30px; cursor: pointer; }
 .Window .WindowNav:hover { cursor: default; }

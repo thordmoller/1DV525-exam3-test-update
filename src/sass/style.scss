@@ -37,9 +37,20 @@ nav{
     position: absolute;
 
     .WindowNav{
-        padding:10px;
+        height: 40px;
         background-color: #0059F4;
         color: white;
+        $size : 30px;
+        .WindowIcon{
+            height: $size;
+            width: $size;
+            float: left;
+            position: relative;
+            margin-top: 2px;
+            margin: 0px 2px;
+            background-image: url('../image/double-chat-sprite.png');
+            background-size: 60px 30px;
+        }
         .WindowClose{
            height: 30px;
            width: 30px;
