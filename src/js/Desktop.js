@@ -46,43 +46,36 @@ export default class Desktop {
         document.addEventListener('mouseup', mouseUp.bind(this))
         e.preventDefault() // prevent text highlight on drag
       }
+      if (element.classList.contains('WindowClose')) {
+        windowNode = element.parentNode.parentNode
+        let window = this.getWindowFromElement(windowNode)
+        this.disposeWindow(window)
+      }
     }.bind(this)
   }
 
   /** Starts listener events */
   waitForAction () {
-    document.querySelector('#button').addEventListener('click', this.openWindow.bind(this))
+    document.querySelector('#button').addEventListener('click', function () { this.openWindow(new PwdWindow(this.windows.length + 1)) }.bind(this))
     document.addEventListener('mousedown', this.mouseDown)
   }
   /** Creates and displays a new window */
-  openWindow () {
-    if (this.windows.length === 0) {
-      this.activeWindow = undefined
-    }
-    if (this.windows.length === 0) {
-      this.windowAmount = 1
-    } else {
-      this.windowAmount = this.windows[this.windows.length - 1].id + 1
-    }
-    this.windows.push(new PwdWindow(this.windowAmount))
-    let w = this.windows[this.windows.length - 1]
-    this.setActiveWindow(w)
-
-    /** finds given window object in windows array and deletes it
-     * @param {PwdWindow} window - The window to be deleted
-     */
-    let deleteFromList = function (window) {
-      for (let i = 0; i < this.windows.length; i++) {
-        if (this.windows[i].id === w.id) {
-          this.windows.splice(i, 1)
-          break // to not run the loop longer than necessary
-        }
+  openWindow (window) {
+    this.setActiveWindow(window)
+    this.windows.push(window)
+    this.windowAmount = this.windows.length
+  }
+  /** finds given window object in windows array and deletes it. Also runs the objects function to delete itself from the DOM.
+   *  @param {PwdWindow} window - The window to be deleted
+   */
+  disposeWindow (window) {
+    for (let i = 0; i < this.windows.length; i++) {
+      if (this.windows[i].id === window.id) {
+        this.windows.splice(i, 1)
+        window.deleteWindow()
+        break // to not run the loop longer than necessary
       }
-    }.bind(this)
-    // eventlistener on the close icon
-    let element = document.querySelector('#w' + w.id)
-    element.querySelectorAll('.WindowClose')[0].addEventListener('click', function () { deleteFromList(w); w.deleteWindow() })
-    console.log(this.windows)
+    }
   }
   /** sets a specified window active and makes the curren one inactive
    * @param {PwdWindow} window - The window to become active
@@ -90,7 +83,7 @@ export default class Desktop {
   setActiveWindow (window) {
     window.makeActive()
     let oldZ = 0 // Z-index of current active window
-    if (this.activeWindow !== undefined) {
+    if (this.windows.length > 0) {
       oldZ = parseInt(this.activeWindow.element.style.zIndex)
       this.activeWindow.makeInactive()
     }
