@@ -1,4 +1,4 @@
-import PwdWindow from './PwdWindow.js'
+import Chat from './Chat.js'
 export default class Desktop {
   /** Represents the Desktop. Keeps track of windows
    * @constructor
@@ -56,7 +56,7 @@ export default class Desktop {
 
   /** Starts listener events */
   waitForAction () {
-    document.querySelector('#button').addEventListener('click', function () { this.openWindow(new PwdWindow(this.windows.length + 1)) }.bind(this))
+    document.querySelector('#button').addEventListener('click', function () { this.openWindow(new Chat(this.windows.length + 1)) }.bind(this))
     document.addEventListener('mousedown', this.mouseDown)
   }
   /** Creates and displays a new window */
