@@ -22,9 +22,8 @@ export default class PwdWindow {
     container.style.left = this.left + 'px'
     container.style.top = this.top + 'px'
     container.style.zIndex = this.id
-    let nav = container.querySelectorAll('.WindowNav')[0]
-    
-    nav.appendChild(document.createTextNode(this.title))
+    //let nav = container.querySelectorAll('.WindowNav')[0]
+    container.querySelectorAll('.WindowTitle')[0].appendChild(document.createTextNode(this.title))
     let content = container.querySelectorAll('.WindowContent')[0]
     content.style.height = this.height + 'px'
     content.style.width = this.width + 'px'
@@ -43,5 +42,18 @@ export default class PwdWindow {
   makeActive () {
     this.element.classList.remove('Inactive')
     this.element.querySelectorAll('.WindowNav')[0].classList.remove('Inactive')
+  }
+  /**
+   * Finds parentNodes recursively from window childnode until the windows first Node is found and returns
+   * @param element - child element of Window
+   */
+  static findWindowNodeFromChild (element) {
+    while (element.parentNode) {
+      element = element.parentNode
+      if (element.classList.contains('Window')) {
+        return element
+      }
+    }
+    return null
   }
 }

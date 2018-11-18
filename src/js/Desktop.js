@@ -23,6 +23,7 @@ export default class Desktop {
 
       /** moves a window */
       let mouseMove = function (e) {
+        windowNode = Chat.findWindowNodeFromChild(element)
         windowNode.style.left = initLeft + (e.clientX - mouseX) + 'px'
         windowNode.style.top = initTop + (e.clientY - mouseY) + 'px'
       }
@@ -32,9 +33,9 @@ export default class Desktop {
         document.removeEventListener('mouseUp', mouseUp)
         document.removeEventListener('mouseDown', this.mouseDown)
       }
-      // if clicked element is a window
-      if (element.classList.contains('WindowNav')) {
-        windowNode = element.parentNode
+      // if clicked element is a windows top panel
+      if (element.classList.contains('WindowNav') || element.classList.contains('WindowIcon') || element.classList.contains('WindowTitle')) {
+        windowNode = Chat.findWindowNodeFromChild(element)
         let window = this.getWindowFromElement(windowNode)
         if (element.classList.contains('Inactive')) {
           this.setActiveWindow(window)
@@ -47,7 +48,7 @@ export default class Desktop {
         document.addEventListener('mouseup', mouseUp.bind(this))
       }
       if (element.classList.contains('WindowClose')) {
-        windowNode = element.parentNode.parentNode
+        windowNode = Chat.findWindowNodeFromChild(element)
         let window = this.getWindowFromElement(windowNode)
         this.disposeWindow(window)
       }

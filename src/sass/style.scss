@@ -48,8 +48,14 @@ nav{
             position: relative;
             margin-top: 2px;
             margin: 0px 2px;
-            background-image: url('../image/double-chat-sprite.png');
+            background: -30px url('../image/double-chat-sprite.png');
             background-size: 60px 30px;
+        }
+        .WindowTitle{
+            float: left;
+            position: relative;
+            margin-top: 8px;
+            margin-left: 5px;
         }
         .WindowClose{
            height: 30px;
