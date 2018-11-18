@@ -46,8 +46,7 @@ nav{
             width: $size;
             float: left;
             position: relative;
-            margin-top: 2px;
-            margin: 0px 2px;
+            margin: 2px 2px;
             background: -30px url('../image/double-chat-sprite.png');
             background-size: 60px 30px;
         }
@@ -85,4 +84,7 @@ $inactiveColor : rgb(104, 160, 255);
 .Inactive{
     background-color: $inactiveColor !important;
     border-color: $inactiveColor !important;
+    .WindowIcon{
+        background-position: 0px 0px !important;
+    }
 }
