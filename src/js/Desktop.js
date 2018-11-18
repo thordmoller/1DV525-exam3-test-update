@@ -37,7 +37,7 @@ export default class Desktop {
       if (element.classList.contains('WindowNav') || element.classList.contains('WindowIcon') || element.classList.contains('WindowTitle')) {
         windowNode = Chat.findWindowNodeFromChild(element)
         let window = this.getWindowFromElement(windowNode)
-        if (element.classList.contains('Inactive')) {
+        if (windowNode.classList.contains('Inactive')) {
           this.setActiveWindow(window)
         }
 
