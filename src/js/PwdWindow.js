@@ -22,9 +22,10 @@ export default class PwdWindow {
     container.style.left = this.left + 'px'
     container.style.top = this.top + 'px'
     container.style.zIndex = this.id
-    //let nav = container.querySelectorAll('.WindowNav')[0]
+    // add title to window
     container.querySelectorAll('.WindowTitle')[0].appendChild(document.createTextNode(this.title))
     let content = container.querySelectorAll('.WindowContent')[0]
+    container.querySelectorAll('.WindowIcon')[0].style.backgroundImage = "url('" + this.iconUrl + "')"
     content.style.height = this.height + 'px'
     content.style.width = this.width + 'px'
     document.querySelector('body').appendChild(clone)

@@ -19,7 +19,10 @@ export default class Desktop {
       // the top and left css values before dragging window
       let initLeft
       let initTop
-      e.preventDefault() // prevent text highlight
+
+      if (e.target.tagName === 'HTML') {
+        e.preventDefault()
+      }
 
       /** moves a window */
       let mouseMove = function (e) {
@@ -40,12 +43,12 @@ export default class Desktop {
         if (windowNode.classList.contains('Inactive')) {
           this.setActiveWindow(window)
         }
-
         // the top and left css values before dragging window
         initLeft = parseInt(windowNode.style.left)
         initTop = parseInt(windowNode.style.top)
         document.addEventListener('mousemove', mouseMove)
         document.addEventListener('mouseup', mouseUp.bind(this))
+        e.preventDefault()
       }
       if (element.classList.contains('WindowClose')) {
         windowNode = Chat.findWindowNodeFromChild(element)
