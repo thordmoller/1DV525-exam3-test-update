@@ -76,14 +76,30 @@ nav{
 
     .WindowContent{
         padding: 10px;
-        background-color: white; 
+        background-color: rgb(245, 245, 245); 
         border: 1px solid navy;
+        overflow: auto;
         .Messages{
-            height: 100px;
+            height: 200px;
             overflow-y: scroll;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            background-color: white;
             div{
                 margin:10px;
             }
+        }
+        textarea{
+            margin-right: 10px;
+            float: left;
+            position: relative;
+            height: 50px;
+            width: 75%;
+        }
+        input[type=button]{
+            position: relative;
+            float: right;
+            height: 50px;
         }
     }
 }

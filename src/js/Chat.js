@@ -3,7 +3,7 @@ import PwdWindow from './PwdWindow'
 export default class Chat extends PwdWindow {
   constructor (id) {
     super(id)
-    this.width = '250'
+    this.width = '300'
     this.title = 'Chat application'
     this.iconUrl = '../image/double-chat-sprite.png'
     this.socket = new window.WebSocket('ws://vhost3.lnu.se:20080/socket/')
