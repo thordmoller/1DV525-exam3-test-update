@@ -13,6 +13,8 @@ nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 .Window .WindowNav .WindowClose:hover { background-position: -30px; cursor: pointer; }
 .Window .WindowNav:hover { cursor: default; }
 .Window .WindowContent { padding: 10px; background-color: white; border: 1px solid navy; }
+.Window .WindowContent .Messages { height: 100px; overflow-y: scroll; }
+.Window .WindowContent .Messages div { margin: 10px; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 .Inactive .WindowIcon { background-position: 0px 0px !important; }

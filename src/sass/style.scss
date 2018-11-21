@@ -78,6 +78,13 @@ nav{
         padding: 10px;
         background-color: white; 
         border: 1px solid navy;
+        .Messages{
+            height: 100px;
+            overflow-y: scroll;
+            div{
+                margin:10px;
+            }
+        }
     }
 }
 $inactiveColor : rgb(104, 160, 255);
