@@ -85,8 +85,11 @@ nav{
             border: 1px solid black;
             margin-bottom: 10px;
             background-color: white;
-            div{
-                margin:10px;
+            p{
+                margin: 10px 10px;
+            }
+            .Username{
+                color: gray !important;
             }
         }
         textarea{

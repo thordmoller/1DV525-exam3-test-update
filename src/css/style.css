@@ -14,7 +14,8 @@ nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 .Window .WindowNav:hover { cursor: default; }
 .Window .WindowContent { padding: 10px; background-color: whitesmoke; border: 1px solid navy; overflow: auto; }
 .Window .WindowContent .Messages { height: 200px; overflow-y: scroll; border: 1px solid black; margin-bottom: 10px; background-color: white; }
-.Window .WindowContent .Messages div { margin: 10px; }
+.Window .WindowContent .Messages p { margin: 10px 10px; }
+.Window .WindowContent .Messages .Username { color: gray !important; }
 .Window .WindowContent textarea { margin-right: 10px; float: left; position: relative; height: 50px; width: 75%; }
 .Window .WindowContent input[type=button] { position: relative; float: right; height: 50px; }
 
