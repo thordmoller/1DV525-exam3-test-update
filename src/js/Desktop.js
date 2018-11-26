@@ -1,4 +1,6 @@
 import Chat from './Chat.js'
+import Memory from './Memory.js'
+
 export default class Desktop {
   /** Represents the Desktop. Keeps track of windows
    * @constructor
@@ -55,8 +57,13 @@ export default class Desktop {
         let window = this.getWindowFromElement(windowNode)
         this.disposeWindow(window)
       }
+      // Chatbutton click
       if (element.classList.contains('ChatButton')) {
         this.openWindow(new Chat(this.windows.length + 1))
+      }
+      // Memory button click
+      if (element.classList.contains('MemoryButton')) {
+        this.openWindow(new Memory(this.windows.length + 1, 4, 5))
       }
     }.bind(this)
   }

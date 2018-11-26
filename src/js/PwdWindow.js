@@ -1,13 +1,22 @@
 export default class PwdWindow {
   /** Represents a window
    * @constructor
-   * @param {id} id - An id number to identify each window
-   */
+   * @param {Number} id - An id number to identify each window
+   * @property {Number} top - Initial top position when the window renders
+   * @property {Number} left - Initial left position when the window renders
+   * @property {Element} element - The html element of the outer window div
+   * @property {Element} content - The html element of the window content
+   * @property {String} title - Title of the window which appears in top bar
+   * @property {String} iconUrl - the url to the icon to be displayed in the top bar
+   * @property {NUmber} height - Optionally set for subclasses
+   * @property {NUmber} width - Optionally set for subclasses
+   * */
   constructor (id) {
     this.id = id
     this.left = (id - 1) * 10
     this.top = (id - 1) * 10
     this.element = undefined
+    this.content = undefined
     this.height = undefined
     this.width = undefined
     this.title = 'Title'
@@ -24,10 +33,10 @@ export default class PwdWindow {
     container.style.zIndex = this.id
     // add title to window
     container.querySelectorAll('.WindowTitle')[0].appendChild(document.createTextNode(this.title))
-    let content = container.querySelectorAll('.WindowContent')[0]
+    this.content = container.querySelectorAll('.WindowContent')[0]
     container.querySelectorAll('.WindowIcon')[0].style.backgroundImage = "url('" + this.iconUrl + "')"
-    content.style.height = this.height + 'px'
-    content.style.width = this.width + 'px'
+    this.content.style.height = this.height + 'px'
+    this.content.style.width = this.width + 'px'
     document.querySelector('body').appendChild(clone)
     this.element = container
   }

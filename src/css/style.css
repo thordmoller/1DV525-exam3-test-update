@@ -1,9 +1,10 @@
 body { background-image: url("../image/wp153122.jpg"); margin: 0; font-family: Arial, Helvetica, sans-serif; }
 
-nav { position: fixed; bottom: 0; background-color: #0041b1; border-top: 2px solid navy; height: 40px; width: 100%; padding: 5px; }
-nav .AppButton { width: 40px; height: 40px; background: no-repeat; background-size: 80px 40px; margin-right: 5px; }
-nav .AppButton:hover { cursor: pointer; background-position: -40px; }
+nav { position: fixed; bottom: 0; background-color: rgba(0, 65, 177, 0.7); border-top: 1px solid navy; height: 50px; width: 100%; padding: 5px; padding-left: 20px; }
+nav .AppButton { width: 50px; height: 50px; background: no-repeat; background-size: 100px 50px; margin-right: 5px; float: left; margin-right: 30px; }
+nav .AppButton:hover { cursor: pointer; background-position: -50px; }
 nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
+nav .MemoryButton { background-image: url("../image/cards-sprite.png"); }
 
 .Window { min-width: 200px; border: 2px solid #0059F4; outline: 1px solid navy; display: inline-block; position: absolute; }
 .Window .WindowNav { height: 40px; background-color: #0059F4; color: white; }
@@ -12,12 +13,13 @@ nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 .Window .WindowNav .WindowClose { height: 30px; width: 30px; position: absolute; right: 4px; top: 3px; background-image: url("../image/close-sprite.png"); background-size: 60px 30px; }
 .Window .WindowNav .WindowClose:hover { background-position: -30px; cursor: pointer; }
 .Window .WindowNav:hover { cursor: default; }
-.Window .WindowContent { padding: 10px; background-color: whitesmoke; border: 1px solid navy; overflow: auto; }
+.Window .WindowContent { padding: 10px; background-color: whitesmoke; border: 1px solid navy; overflow: auto; white-space: nowrap; }
 .Window .WindowContent .Messages { height: 200px; overflow-y: scroll; border: 1px solid black; margin-bottom: 10px; background-color: white; }
 .Window .WindowContent .Messages p { margin: 10px 10px; }
 .Window .WindowContent .Messages .Username { color: gray !important; }
 .Window .WindowContent textarea { margin-right: 10px; float: left; position: relative; height: 50px; width: 75%; }
 .Window .WindowContent input[type=button] { position: relative; float: right; height: 50px; }
+.Window .WindowContent .MemoryImage { height: 100px; width: 100px; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 .Inactive .WindowIcon { background-position: 0px 0px !important; }
