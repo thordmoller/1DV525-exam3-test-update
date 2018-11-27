@@ -10,6 +10,13 @@ export default class Memory extends PwdWindow {
     this.imageArray = this.getImageArray()
     this.flipOne = undefined
     this.flipTwo = undefined
+    this.mouseDown = function (e) {
+      e.preventDefault()
+      console.log(e.target)
+      if (e.target.classList.contains('MemoryImage')) {
+        this.flipCard(e.target.getAttribute('card-number'), e.target.getAttribute('index'), e.target)
+      }
+    }.bind(this)
     this.displayWindow()
   }
 
@@ -20,27 +27,17 @@ export default class Memory extends PwdWindow {
     this.imageArray.forEach((element, index) => {
       let img = document.importNode(template, true)
       this.content.appendChild(img)
-
-      img.addEventListener('click', (e) => {
-        console.log(element)
-        this.flipCard(element, index, e.target)
-      })
-
+      img.firstElementChild.setAttribute('card-number', element)
+      img.firstElementChild.setAttribute('index', index)
       if ((index + 1) % this.cols === 0) {
         this.content.appendChild(document.createElement('br'))
       }
     })
-
-    /*for (let i = 0; i < this.imageArray.length; i++) {
-      let img = document.createElement('img')
-      img.setAttribute('src', '../image/memory/' + this.imageArray[i] + '.png')
-      img.setAttribute('class', 'MemoryImage')
-      this.content.appendChild(img)
-
-      if ((i + 1) % this.cols === 0) {
-        this.content.appendChild(document.createElement('br'))
-      }
-    }*/
+    this.content.addEventListener('mousedown', this.mouseDown)
+  }
+  deleteWindow () {
+    this.content.removeEventListener('mousedown', this.mouseDown)
+    super.deleteWindow()
   }
 
   getImageArray () {
@@ -84,17 +81,18 @@ export default class Memory extends PwdWindow {
       } else if (this.flipOne.index !== object.index) {
         this.flipTwo = object
         if (this.flipOne.element === this.flipTwo.element) {
-          console.log('yay')
-          this.flipOne.target.src = unknownSrc
-          this.flipTwo.target.src = unknownSrc
-          this.flipOne.target.parentNode.classList.add('Removed')
-          this.flipTwo.target.parentNode.classList.add('Removed')
-        } else {
-          this.flipOne.target.src = unknownSrc
-          this.flipTwo.target.src = unknownSrc
+          window.setTimeout(() => {
+            console.log('yay')
+            this.flipOne.target.parentNode.classList.add('Removed')
+            this.flipTwo.target.parentNode.classList.add('Removed')
+          }, 500)
         }
-        this.flipOne = undefined
-        this.flipTwo = undefined
+        window.setTimeout(() => {
+          this.flipOne.target.src = unknownSrc
+          this.flipTwo.target.src = unknownSrc
+          this.flipOne = undefined
+          this.flipTwo = undefined
+        }, 500)
       }
     }
   }
