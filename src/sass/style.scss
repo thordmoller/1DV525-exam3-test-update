@@ -116,6 +116,9 @@ nav{
             height: 100px;
             width: 100px;
         }
+        .Removed {
+            visibility: hidden;
+        }
     }
 }
 $inactiveColor : rgb(104, 160, 255);

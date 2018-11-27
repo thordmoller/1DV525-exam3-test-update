@@ -8,21 +8,39 @@ export default class Memory extends PwdWindow {
     this.title = 'Memory Game'
     this.iconUrl = '../image/cards-sprite.png'
     this.imageArray = this.getImageArray()
+    this.flipOne = undefined
+    this.flipTwo = undefined
     this.displayWindow()
   }
 
   displayWindow () {
     super.displayWindow()
-    for (let i = 0; i < this.rows * this.cols; i += 1) {
+
+    let template = document.querySelectorAll('#memory')[0].content.firstElementChild
+    this.imageArray.forEach((element, index) => {
+      let img = document.importNode(template, true)
+      this.content.appendChild(img)
+
+      img.addEventListener('click', (e) => {
+        console.log(element)
+        this.flipCard(element, index, e.target)
+      })
+
+      if ((index + 1) % this.cols === 0) {
+        this.content.appendChild(document.createElement('br'))
+      }
+    })
+
+    /*for (let i = 0; i < this.imageArray.length; i++) {
       let img = document.createElement('img')
-      img.setAttribute('src', '../image/memory/0.png')
+      img.setAttribute('src', '../image/memory/' + this.imageArray[i] + '.png')
       img.setAttribute('class', 'MemoryImage')
       this.content.appendChild(img)
 
       if ((i + 1) % this.cols === 0) {
         this.content.appendChild(document.createElement('br'))
       }
-    }
+    }*/
   }
 
   getImageArray () {
@@ -32,7 +50,6 @@ export default class Memory extends PwdWindow {
       arr.push(i)
     }
     arr = Memory.shuffleArray(arr)
-    console.log(arr)
     return arr
   }
 
@@ -52,5 +69,33 @@ export default class Memory extends PwdWindow {
       array[randomIndex] = temporaryValue
     }
     return array
+  }
+  flipCard (element, index, target) {
+    if (target.nodeName !== 'IMG') {
+      target = target.firstElementChild
+    }
+    let object = { element, index, target }
+    let unknownSrc = '../image/memory/0.png'
+    if (!this.flipOne || !this.flipTwo) {
+      console.log(target.src.parentElement)
+      target.setAttribute('src', '../image/memory/' + element + '.png')
+      if (!this.flipOne) {
+        this.flipOne = object
+      } else if (this.flipOne.index !== object.index) {
+        this.flipTwo = object
+        if (this.flipOne.element === this.flipTwo.element) {
+          console.log('yay')
+          this.flipOne.target.src = unknownSrc
+          this.flipTwo.target.src = unknownSrc
+          this.flipOne.target.parentNode.classList.add('Removed')
+          this.flipTwo.target.parentNode.classList.add('Removed')
+        } else {
+          this.flipOne.target.src = unknownSrc
+          this.flipTwo.target.src = unknownSrc
+        }
+        this.flipOne = undefined
+        this.flipTwo = undefined
+      }
+    }
   }
 }
