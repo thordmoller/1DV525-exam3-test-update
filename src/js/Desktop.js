@@ -63,7 +63,7 @@ export default class Desktop {
       }
       // Memory button click
       if (element.classList.contains('MemoryButton')) {
-        this.openWindow(new Memory(this.windows.length + 1, 4, 5))
+        this.openWindow(new Memory(this.windows.length + 1, 4, 4))
       }
     }.bind(this)
   }
