@@ -34,6 +34,12 @@ export default class Desktop {
       }
       /** Deletes eventlisteners on mouserelease */
       let mouseUp = function (e) {
+        if (parseInt(windowNode.style.top) < 0) {
+          windowNode.style.top = '0px'
+        }
+        if (parseInt(windowNode.style.left) < 0) {
+          windowNode.style.left = '0px'
+        }
         document.removeEventListener('mousemove', mouseMove)
         document.removeEventListener('mouseUp', mouseUp)
         document.removeEventListener('mouseDown', this.mouseDown)

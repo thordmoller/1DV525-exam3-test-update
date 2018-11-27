@@ -119,6 +119,9 @@ nav{
         .Removed {
             visibility: hidden;
         }
+        a:focus{
+            outline: 2px solid rgb(0, 110, 255);
+        }
     }
 }
 $inactiveColor : rgb(104, 160, 255);

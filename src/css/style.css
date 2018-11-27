@@ -21,6 +21,7 @@ nav .MemoryButton { background-image: url("../image/cards-sprite.png"); }
 .Window .WindowContent input[type=button] { position: relative; float: right; height: 50px; }
 .Window .WindowContent .MemoryImage { height: 100px; width: 100px; }
 .Window .WindowContent .Removed { visibility: hidden; }
+.Window .WindowContent a:focus { outline: 2px solid #006eff; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 .Inactive .WindowIcon { background-position: 0px 0px !important; }
