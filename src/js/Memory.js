@@ -10,11 +10,19 @@ export default class Memory extends PwdWindow {
     this.imageArray = this.getImageArray()
     this.flipOne = undefined
     this.flipTwo = undefined
-    this.mouseDown = function (e) {
-      e.preventDefault()
-      console.log(e.target)
-      if (e.target.classList.contains('MemoryImage')) {
-        this.flipCard(e.target.getAttribute('card-number'), e.target.getAttribute('index'), e.target)
+    this.pairs = 0
+    this.click = function (e) {
+      console.log(e.target.nodeName)
+      let target = e.target
+      if (target.nodeName === 'A') {
+        target = target.firstElementChild
+      }
+      if (target.classList.contains('MemoryImage')) {
+        this.flipCard(target.getAttribute('card-number'), target.getAttribute('index'), target)
+      }
+      if (target.classList.contains('PlayAgain')) {
+        this.content.innerHTML = ''
+        this.newGame(this.rows, this.cols)
       }
     }.bind(this)
     this.displayWindow()
@@ -22,22 +30,31 @@ export default class Memory extends PwdWindow {
 
   displayWindow () {
     super.displayWindow()
-
+    this.newGame(this.rows, this.cols)
+    this.content.addEventListener('click', this.click)
+  }
+  deleteWindow () {
+    this.content.removeEventListener('click', this.click)
+    super.deleteWindow()
+  }
+  newGame (rows, cols) {
     let template = document.querySelectorAll('#memory')[0].content.firstElementChild
+    this.pairs = 0
+    this.rows = rows
+    this.cols = cols
+    this.imageArray = this.getImageArray()
     this.imageArray.forEach((element, index) => {
       let img = document.importNode(template, true)
       this.content.appendChild(img)
+      if (index === 0) {
+        img.focus()
+      }
       img.firstElementChild.setAttribute('card-number', element)
       img.firstElementChild.setAttribute('index', index)
-      if ((index + 1) % this.cols === 0) {
+      if ((index + 1) % cols === 0) {
         this.content.appendChild(document.createElement('br'))
       }
     })
-    this.content.addEventListener('mousedown', this.mouseDown)
-  }
-  deleteWindow () {
-    this.content.removeEventListener('mousedown', this.mouseDown)
-    super.deleteWindow()
   }
 
   getImageArray () {
@@ -74,7 +91,6 @@ export default class Memory extends PwdWindow {
     let object = { element, index, target }
     let unknownSrc = '../image/memory/0.png'
     if (!this.flipOne || !this.flipTwo) {
-      console.log(target.src.parentElement)
       target.setAttribute('src', '../image/memory/' + element + '.png')
       if (!this.flipOne) {
         this.flipOne = object
@@ -82,9 +98,14 @@ export default class Memory extends PwdWindow {
         this.flipTwo = object
         if (this.flipOne.element === this.flipTwo.element) {
           window.setTimeout(() => {
-            console.log('yay')
+            // found a pair
             this.flipOne.target.parentNode.classList.add('Removed')
             this.flipTwo.target.parentNode.classList.add('Removed')
+            this.pairs++
+            console.log(this.pairs)
+            if (this.pairs === (this.rows * this.cols) / 2) {
+              this.victory()
+            }
           }, 500)
         }
         window.setTimeout(() => {
@@ -95,5 +116,12 @@ export default class Memory extends PwdWindow {
         }, 500)
       }
     }
+  }
+  victory () {
+    console.log('Victory!')
+    this.content.innerHTML = ''
+    let template = document.querySelectorAll('#memory')[0].content.children[1]
+    let victoryView = document.importNode(template, true)
+    this.content.appendChild(victoryView)
   }
 }
