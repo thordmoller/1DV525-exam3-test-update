@@ -1,5 +1,6 @@
 import Chat from './Chat.js'
 import Memory from './Memory.js'
+import Paint from './Paint.js';
 
 export default class Desktop {
   /** Represents the Desktop. Keeps track of windows
@@ -70,6 +71,9 @@ export default class Desktop {
       // Memory button click
       if (element.classList.contains('MemoryButton')) {
         this.openWindow(new Memory(this.windows.length + 1, 4, 4))
+      }
+      if (element.classList.contains('PaintButton')) {
+        this.openWindow(new Paint(this.windows.length + 1))
       }
     }.bind(this)
   }

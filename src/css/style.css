@@ -5,6 +5,7 @@ nav .AppButton { width: 50px; height: 50px; background: no-repeat; background-si
 nav .AppButton:hover { cursor: pointer; background-position: -50px; }
 nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 nav .MemoryButton { background-image: url("../image/cards-sprite.png"); }
+nav .PaintButton { background-image: url("../image/paint-sprite.png"); }
 
 .Window { min-width: 200px; border: 2px solid #0059F4; outline: 1px solid navy; display: inline-block; position: absolute; }
 .Window .WindowNav { height: 40px; background-color: #0059F4; color: white; }
@@ -22,6 +23,7 @@ nav .MemoryButton { background-image: url("../image/cards-sprite.png"); }
 .Window .WindowContent .MemoryImage { height: 100px; width: 100px; }
 .Window .WindowContent .Removed { visibility: hidden; }
 .Window .WindowContent a:focus { outline: 2px solid #006eff; }
+.Window .WindowContent .Sheet { width: 600px; height: 400px; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 .Inactive .WindowIcon { background-position: 0px 0px !important; }

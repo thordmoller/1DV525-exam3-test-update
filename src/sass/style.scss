@@ -35,6 +35,9 @@ nav{
     .MemoryButton{
         background-image: url('../image/cards-sprite.png');
     }
+    .PaintButton{
+        background-image: url('../image/paint-sprite.png');
+    }
 }
 
 .Window{
@@ -122,6 +125,10 @@ nav{
         }
         a:focus{
             outline: 2px solid rgb(0, 110, 255);
+        }
+        .Sheet{
+            width: 600px;
+            height: 400px;
         }
     }
 }
