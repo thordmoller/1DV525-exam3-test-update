@@ -32,6 +32,7 @@ export default class Chat extends PwdWindow {
     container.appendChild(clone)
     let textarea = container.querySelectorAll('textarea')[0]
     container.querySelectorAll('input')[0].addEventListener('click', () => {
+      textarea.value = textarea.value.trim()
       if (textarea.value !== '') {
         let data = {
           'type': 'message',
@@ -47,7 +48,10 @@ export default class Chat extends PwdWindow {
     // for sending on pressing enter
     textarea.addEventListener('keyup', function (event) {
       if (event.keyCode === 13) {
-        container.querySelectorAll('input')[0].click()
+        event.preventDefault()
+        if (textarea.value !== '') {
+          container.querySelectorAll('input')[0].click()
+        }
       }
     })
     this.socket.addEventListener('open', event => {
