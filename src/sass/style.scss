@@ -12,8 +12,7 @@ nav{
     border-top:  1px solid navy;
     height: $iconSize;
     width: 100%;
-    padding: 5px;
-    padding-left: 20px;
+    padding: 5px 25px;
     .AppButton{
         $size: $iconSize;
         width: $size;
@@ -37,6 +36,10 @@ nav{
     }
     .PaintButton{
         background-image: url('../image/paint-sprite.png');
+    }
+    .AboutButton{
+        background-image: url('../image/question-mark-sprite.png');
+        float: right;
     }
 }
 

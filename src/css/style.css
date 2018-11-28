@@ -1,11 +1,12 @@
 body { background-image: url("../image/wp153122.jpg"); margin: 0; font-family: Arial, Helvetica, sans-serif; }
 
-nav { position: fixed; bottom: 0; background-color: rgba(0, 65, 177, 0.7); border-top: 1px solid navy; height: 50px; width: 100%; padding: 5px; padding-left: 20px; }
+nav { position: fixed; bottom: 0; background-color: rgba(0, 65, 177, 0.7); border-top: 1px solid navy; height: 50px; width: 100%; padding: 5px 25px; }
 nav .AppButton { width: 50px; height: 50px; background: no-repeat; background-size: 100px 50px; margin-right: 5px; float: left; margin-right: 30px; border: 0; }
 nav .AppButton:hover { cursor: pointer; background-position: -50px; }
 nav .ChatButton { background-image: url("../image/double-chat-sprite.png"); }
 nav .MemoryButton { background-image: url("../image/cards-sprite.png"); }
 nav .PaintButton { background-image: url("../image/paint-sprite.png"); }
+nav .AboutButton { background-image: url("../image/question-mark-sprite.png"); float: right; }
 
 .Window { min-width: 200px; border: 2px solid #0059F4; outline: 1px solid navy; display: inline-block; position: absolute; }
 .Window .WindowNav { height: 40px; background-color: #0059F4; color: white; }

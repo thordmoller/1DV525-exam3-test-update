@@ -1,6 +1,7 @@
 import Chat from './Chat.js'
 import Memory from './Memory.js'
 import Paint from './Paint.js'
+import About from './About.js'
 
 export default class Desktop {
   /** Represents the Desktop. Keeps track of windows
@@ -74,6 +75,9 @@ export default class Desktop {
       }
       if (element.classList.contains('PaintButton')) {
         this.openWindow(new Paint(this.windows.length + 1))
+      }
+      if (element.classList.contains('AboutButton')) {
+        this.openWindow(new About(this.windows.length + 1))
       }
     }.bind(this)
   }
