@@ -7,6 +7,7 @@ export default class Chat extends PwdWindow {
     this.title = 'Chat application'
     this.iconUrl = '../image/double-chat-sprite.png'
     this.socket = new window.WebSocket('ws://vhost3.lnu.se:20080/socket/')
+    this.channel = window.localStorage.getItem('channel')
     this.displayWindow()
     this.lastMessageDate = undefined
   }
@@ -31,14 +32,23 @@ export default class Chat extends PwdWindow {
     let clone = template.content.cloneNode(true)
     container.appendChild(clone)
     let textarea = container.querySelectorAll('textarea')[0]
-    container.querySelectorAll('input')[0].addEventListener('click', () => {
+    let channelbutton = container.querySelectorAll('button')[0]
+    container.querySelectorAll('input')[0].value = this.channel
+    channelbutton.addEventListener('click', () => {
+      console.log('hej')
+      let newChannel = this.content.querySelectorAll('input')[0].value
+      window.localStorage.setItem('channel', newChannel)
+      this.channel = newChannel
+    })
+    console.log(channelbutton)
+    container.querySelectorAll('input')[1].addEventListener('click', () => {
       textarea.value = textarea.value.trim()
       if (textarea.value !== '') {
         let data = {
           'type': 'message',
           'data': textarea.value,
           'username': window.localStorage.getItem('username'),
-          // 'channel': 'hej',
+          'channel': this.channel,
           'key': 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
         }
         this.socket.send(JSON.stringify(data))
@@ -48,9 +58,8 @@ export default class Chat extends PwdWindow {
     // for sending on pressing enter
     textarea.addEventListener('keyup', function (event) {
       if (event.keyCode === 13) {
-        event.preventDefault()
         if (textarea.value !== '') {
-          container.querySelectorAll('input')[0].click()
+          container.querySelectorAll('input')[1].click()
         }
       }
     })
@@ -59,54 +68,63 @@ export default class Chat extends PwdWindow {
     })
     this.socket.addEventListener('message', event => {
       let data = JSON.parse(event.data)
-      let p = document.createElement('p')
-      if (data['type'] === 'message' || data['type'] === 'notification') {
-        if (data['data'] !== '') {
-          let messageDiv = this.element.querySelectorAll('.Messages')[0]
-          let time = new Date()
-          time.setSeconds(0)
-          time.setMilliseconds(0)
-          let output = ''
-          if (this.isNewDate(time)) {
-            output += time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
-            p.appendChild(document.createTextNode(output))
-            p.setAttribute('class', 'Username')
-            messageDiv.appendChild(p)
-          }
-          if (time > this.lastMessageDate || this.lastMessageDate === undefined) {
-            let hours = time.getHours()
-            let minutes = time.getMinutes()
-            if (hours < 10) {
-              hours = '0' + hours
-            }
-            if (minutes < 10) {
-              minutes = '0' + minutes
-            }
-            output = hours + ':' + minutes
-            this.lastMessageDate = time
-            p = document.createElement('p')
-            p.appendChild(document.createTextNode(output))
-            p.setAttribute('class', 'Username')
-            messageDiv.appendChild(p)
-          }
-          output = data['username'] + ' says: '
-          p = document.createElement('p')
-          let span = document.createElement('span')
-          span.appendChild(document.createTextNode(output))
-          span.setAttribute('class', 'Username')
-          p.appendChild(span)
-          p.appendChild(document.createElement('br'))
-          p.appendChild(document.createTextNode(data['data']))
-          if (data['username'] === window.localStorage.getItem('username')) {
-            p.setAttribute('class', 'ThisUser')
-          }
-          messageDiv.appendChild(p)
-          messageDiv.scrollTop = messageDiv.scrollHeight // scroll down the div containing messages
+      console.log(data)
+      if (data['type'] === 'notification') {
+        this.displayMessage(data)
+      }
+      if (data['type'] === 'message') {
+        if ((this.channel !== '' && this.channel === data['channel']) || (this.channel === '')) {
+          this.displayMessage(data)
         }
       } else {
         console.log(data)
       }
     })
+  }
+  displayMessage (data) {
+    if (data['data'] !== '') {
+      let p = document.createElement('p')
+      let messageDiv = this.element.querySelectorAll('.Messages')[0]
+      let time = new Date()
+      time.setSeconds(0)
+      time.setMilliseconds(0)
+      let output = ''
+      if (this.isNewDate(time)) {
+        output += time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
+        p.appendChild(document.createTextNode(output))
+        p.setAttribute('class', 'Username')
+        messageDiv.appendChild(p)
+      }
+      if (time > this.lastMessageDate || this.lastMessageDate === undefined) {
+        let hours = time.getHours()
+        let minutes = time.getMinutes()
+        if (hours < 10) {
+          hours = '0' + hours
+        }
+        if (minutes < 10) {
+          minutes = '0' + minutes
+        }
+        output = hours + ':' + minutes
+        this.lastMessageDate = time
+        p = document.createElement('p')
+        p.appendChild(document.createTextNode(output))
+        p.setAttribute('class', 'Username')
+        messageDiv.appendChild(p)
+      }
+      output = data['username'] + ' says: '
+      p = document.createElement('p')
+      let span = document.createElement('span')
+      span.appendChild(document.createTextNode(output))
+      span.setAttribute('class', 'Username')
+      p.appendChild(span)
+      p.appendChild(document.createElement('br'))
+      p.appendChild(document.createTextNode(data['data']))
+      if (data['username'] === window.localStorage.getItem('username')) {
+        p.setAttribute('class', 'ThisUser')
+      }
+      messageDiv.appendChild(p)
+      messageDiv.scrollTop = messageDiv.scrollHeight // scroll down the div containing messages
+    }
   }
   /** Displays an input field asking the user to provide a username */
   requestUsername () {
