@@ -90,7 +90,6 @@ nav{
         background-color: rgb(245, 245, 245); 
         border: 1px solid navy;
         overflow: auto;
-        white-space: nowrap;
         .Messages{
             height: 200px;
             overflow-y: scroll;
@@ -127,8 +126,6 @@ nav{
             outline: 2px solid rgb(0, 110, 255);
         }
         .Sheet{
-            width: 600px;
-            height: 400px;
         }
     }
 }
