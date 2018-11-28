@@ -1,6 +1,6 @@
 import Chat from './Chat.js'
 import Memory from './Memory.js'
-import Paint from './Paint.js';
+import Paint from './Paint.js'
 
 export default class Desktop {
   /** Represents the Desktop. Keeps track of windows

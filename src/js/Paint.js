@@ -33,13 +33,12 @@ export default class Paint extends PwdWindow {
     canvas.setAttribute('width', 800)
     canvas.setAttribute('height', 600)
     cx.lineCap = 'round'
-
+    let button = this.element.querySelectorAll('button')[0]
+    button.addEventListener('click', this.clear.bind(this))
     let slider = this.content.querySelectorAll('input')[1]
-    console.log(slider)
     slider.oninput = () => {
       let sliderlabel = this.content.querySelectorAll('label')[2]
       sliderlabel.innerText = slider.value
-      console.log(sliderlabel)
     }
     canvas.addEventListener('mousedown', function (event) {
       let mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
@@ -61,7 +60,6 @@ export default class Paint extends PwdWindow {
     cx.lineTo(x, y)
     cx.stroke()
     cx.closePath()
-    console.log(this.previousX + ' ' + x)
     this.previousX = x
     this.previousY = y
   }
@@ -71,5 +69,10 @@ export default class Paint extends PwdWindow {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     }
+  }
+  clear () {
+    let canvas = this.content.querySelectorAll('.Sheet')[0]
+    const context = canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height)
   }
 }
