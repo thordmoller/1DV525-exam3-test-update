@@ -23,6 +23,7 @@ nav .PaintButton { background-image: url("../image/paint-sprite.png"); }
 .Window .WindowContent .MemoryImage { height: 100px; width: 100px; }
 .Window .WindowContent .Removed { visibility: hidden; }
 .Window .WindowContent a:focus { outline: 2px solid #006eff; }
+.Window .WindowContent .Sheet { background: white; outline: 2px solid black; margin-top: 15px; }
 
 .Inactive { background-color: #68a0ff !important; border-color: #68a0ff !important; }
 .Inactive .WindowIcon { background-position: 0px 0px !important; }

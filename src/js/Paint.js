@@ -6,6 +6,8 @@ export default class Paint extends PwdWindow {
     this.title = 'Paint'
     this.iconUrl = '../image/paint-sprite.png'
     this.displayWindow()
+    this.previousX = 0
+    this.previousY = 0
     this.mousemove = function (event) {
       let mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
       this.draw(mousepos.x, mousepos.y)
@@ -13,6 +15,8 @@ export default class Paint extends PwdWindow {
     this.mouseup = function () {
       this.content.querySelectorAll('.Sheet')[0].removeEventListener('mousemove', this.mousemove)
       document.removeEventListener('mouseup', this.mouseup)
+      this.previousX = 0
+      this.previousy = 0
     }.bind(this)
   }
   displayWindow () {
@@ -28,10 +32,18 @@ export default class Paint extends PwdWindow {
     let cx = canvas.getContext('2d')
     canvas.setAttribute('width', 800)
     canvas.setAttribute('height', 600)
-    cx.lineWidth = 20
     cx.lineCap = 'round'
-    cx.strokeStyle = 'black'
+
+    let slider = this.content.querySelectorAll('input')[1]
+    console.log(slider)
+    slider.oninput = () => {
+      let sliderlabel = this.content.querySelectorAll('label')[2]
+      sliderlabel.innerText = slider.value
+      console.log(sliderlabel)
+    }
     canvas.addEventListener('mousedown', function (event) {
+      let mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
+      this.draw(mousepos.x, mousepos.y)
       event.target.addEventListener('mousemove', this.mousemove)
       document.addEventListener('mouseup', this.mouseup)
     }.bind(this))
@@ -39,17 +51,19 @@ export default class Paint extends PwdWindow {
 
   draw (x, y) {
     let canvas = this.content.querySelectorAll('.Sheet')[0]
-    this.cx = canvas.getContext('2d')
-    this.cx.beginPath()
-    this.cx.moveTo(x, y)
-    this.cx.lineTo(x, y)
-    this.cx.stroke()
-    this.cx.closePath()
-      /*this.cx.fillStyle = 'rgb(200, 0, 0)'
-      this.cx.fillRect(10, 10, 50, 50)
-      this.cx.fillStyle = 'rgba(0, 0, 200, 0.5)'
-      this.cx.fillRect(0, 0, 100, 60)
-      this.cx.closePath()*/
+    let cx = canvas.getContext('2d')
+    cx.strokeStyle = this.content.querySelectorAll('input')[0].value
+    cx.lineWidth = this.content.querySelectorAll('input')[1].value
+    cx.beginPath()
+    if (this.previousX > 0 && this.previousY > 0) {
+      cx.moveTo(this.previousX, this.previousY)
+    }
+    cx.lineTo(x, y)
+    cx.stroke()
+    cx.closePath()
+    console.log(this.previousX + ' ' + x)
+    this.previousX = x
+    this.previousY = y
   }
   getMousePos (canvas, evt) {
     let rect = canvas.getBoundingClientRect()
