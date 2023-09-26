@@ -1,9 +1,9 @@
 # Personal Web Desktop app
 This is a personal web desktop app that runs completely in the browser. I made it for an assignment in the course 1DV525 "Introduction to web programming" at the Linneaus University in Växjö. It's a frontend development in vanilla Javascript using Node.js
 
-The desktop contains 3 applications that are opened in their own window when you click their icon. There is no limit to how many windows you can open. The visual design is heavily inspired by the looks of classic windows XP. However it slightly turned into something of its own once i started working on it.
-
 [Live Demo](https://thordmoller.github.io/personal-web-desktop/)
+
+The desktop contains 3 applications that are opened in their own window when you click their icon. There is no limit to how many windows you can open. The visual design is heavily inspired by the looks of classic windows XP. However it slightly turned into something of its own once i started working on it.
 ## Installation for development
 Make sure node.js and npm is installed on your system.
 
