@@ -1,73 +1,85 @@
 <!doctype html>
 <html lang="">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <nav>
-            <button class="AppButton ChatButton"></button>
-            <button class="AppButton MemoryButton"></button>
-            <button class="AppButton PaintButton"></button>
-            <button class="AppButton AboutButton"></button>
-        </nav>
-        <!--Window template-->
-        <template id="window">
-            <div class="Window">
-                <div class="WindowNav">
-                    <div class="WindowIcon"></div>
-                    <div class="WindowTitle"></div>
-                    <div class="WindowClose"></div>
-                </div>
-                <div class="WindowContent">
-                </div>
+<head>
+
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav>
+        <button class="AppButton ChatButton"></button>
+        <button class="AppButton MemoryButton"></button>
+        <button class="AppButton PaintButton"></button>
+        <button class="AppButton AboutButton"></button>
+    </nav>
+    <!--Window template-->
+    <template id="window">
+        <div class="Window">
+            <div class="WindowNav">
+                <div class="WindowIcon"></div>
+                <div class="WindowTitle"></div>
+                <div class="WindowClose"></div>
             </div>
-        </template>
-        <!--  Chat templates -->
-        <template id="chatApp">
-            <input type="text" name="channel">
-            <button>switch channel</button>
-            <div class="Messages"></div>
-            <form>
-                <textarea></textarea>
-                <input type="button" value="Send">
-            </form>
-        </template>
-        <template id="chatUsername">
-            <form>
-                <label>Enter a username</label>
-                <input type="text" name="username">
-                <input type="button" value="Submit">
-            </form>
-        </template>
-        <!-- Memory templates -->
-        <template id="memory">
-            <a href="#"><img src="image/memory/0.png" alt="Memory brick" class="MemoryImage"></a>
-            <div class="MemoryVictory"><h1>Victory!</h1><button class="PlayAgain">Play Again</button></div>
-        </template>
-        <template id="paint">
-                <input type="color" name="color" value="#000000">
-                 <label for="color">Color</label>
-                 <input type="range" name="pencil size" value="20" min="1" max="100">
-                 <label for="pencil size">Pencil size: </label>
-                 <label>20</label>
-                 <button class="Clear">Clear sheet</button>
-                 <div>
+            <div class="WindowContent">
+            </div>
+        </div>
+    </template>
+    <!--  Chat templates -->
+    <template id="chatApp">
+        <input type="text" name="channel">
+        <button>switch channel</button>
+        <div class="Messages"></div>
+        <form>
+            <textarea></textarea>
+            <input type="button" value="Send">
+        </form>
+    </template>
+    <template id="chatUsername">
+        <form>
+            <label>Enter a username</label>
+            <input type="text" name="username">
+            <input type="button" value="Submit">
+        </form>
+    </template>
+    <!-- Memory templates -->
+    <template id="memory">
+        <a href="#"><img src="image/memory/0.png" alt="Memory brick" class="MemoryImage"></a>
+        <div class="MemoryVictory">
+            <h1>Victory!</h1><button class="PlayAgain">Play Again</button>
+        </div>
+    </template>
+    <template id="paint">
+        <input type="color" name="color" value="#000000">
+        <label for="color">Color</label>
+        <input type="range" name="pencil size" value="20" min="1" max="100">
+        <label for="pencil size">Pencil size: </label>
+        <label>20</label>
+        <button class="Clear">Clear sheet</button>
+        <div>
             <canvas class="Sheet"></canvas>
-            </div>
-        </template>
-        <template id="about">
-            <h1>About</h1>
-            <p>This is a personal web desktop developed by Thord Möller. Inside it there are 3 applications. A chat app, a memory game and a paint tool. Enjoy.</p>
-            <h2>Credits</h2>
-            <div>Icons made by <a href="https://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="https://www.flaticon.com/authors/elegant-themes" title="Elegant Themes">Elegant Themes</a>, <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-        </template>
+        </div>
+    </template>
+    <template id="about">
+        <h1>About</h1>
+        <p>This is a personal web desktop developed by Thord Möller. Inside it there are 3 applications. A chat app, a
+            memory game and a paint tool. Enjoy.</p>
+        <h2>Credits</h2>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel
+                Bruce</a>, <a href="https://www.flaticon.com/authors/elegant-themes" title="Elegant Themes">Elegant
+                Themes</a>, <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a
+                href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a
+                href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+                3.0 BY</a></div>
+    </template>
 
 
-        <script src="build.js"></script>
-    </body>
+    <script type="module" src="./js/app.js"></script>
+</body>
+
 </html>
