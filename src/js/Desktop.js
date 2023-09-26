@@ -1,4 +1,4 @@
-import Chat from './Chat.js'
+//import Chat from './Chat.js'	//deactivated until there is a working server again
 import Memory from './Memory.js'
 import Paint from './Paint.js'
 import About from './About.js'
