@@ -5,7 +5,6 @@ node_modules/
 .parcel-cache/
 
 # Parcel 2 output directory
-build/
 devbuild/
 dist/
 
