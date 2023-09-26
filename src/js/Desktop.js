@@ -44,7 +44,7 @@ export default class Desktop {
 					windowNode.style.left = '0px'
 				}
 				document.removeEventListener('mousemove', mouseMove)
-				document.removeEventListener('mouseUp', mouseUp)
+				document.removeEventListener('mouseup', mouseUp)
 
 				document.addEventListener('mousedown', this.mouseDown)  //start listening to clicks again
 			}
