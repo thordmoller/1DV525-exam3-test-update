@@ -5,7 +5,7 @@
   "source": "./src/index.html",
   "scripts": {
     "start": "parcel --dist-dir devbuild",
-    "build": "parcel build --dist-dir build --public-url ./"
+    "build": "parcel build --dist-dir docs --public-url ./"
   },
   "devDependencies": {
     "@parcel/resolver-glob": "^2.9.3",
