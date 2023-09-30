@@ -1,5 +1,5 @@
 import Desktop from './Desktop.js'
 
-let d = new Desktop()
+const d = new Desktop()
 
 d.waitForAction()

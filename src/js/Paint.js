@@ -4,12 +4,12 @@ export default class Paint extends PwdWindow {
   constructor (id) {
     super(id)
     this.title = 'Paint'
-    this.iconUrl = '../image/paint-sprite.png'
+    this.iconUrl = new URL('../image/paint-sprite.png', import.meta.url)
     this.displayWindow()
     this.previousX = 0
     this.previousY = 0
     this.mousemove = function (event) {
-      let mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
+      const mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
       this.draw(mousepos.x, mousepos.y)
     }.bind(this)
     this.mouseup = function () {
@@ -19,29 +19,30 @@ export default class Paint extends PwdWindow {
       this.previousy = 0
     }.bind(this)
   }
+
   displayWindow () {
     super.displayWindow()
     this.setup()
   }
 
   setup () {
-    let template = document.querySelector('#paint').content
+    const template = document.querySelector('#paint').content
     let canvas = document.importNode(template, true)
     this.content.appendChild(canvas)
     canvas = this.content.querySelectorAll('.Sheet')[0]
-    let cx = canvas.getContext('2d')
+    const cx = canvas.getContext('2d')
     canvas.setAttribute('width', 800)
     canvas.setAttribute('height', 600)
     cx.lineCap = 'round'
-    let button = this.element.querySelectorAll('button')[0]
+    const button = this.element.querySelectorAll('button')[0]
     button.addEventListener('click', this.clear.bind(this))
-    let slider = this.content.querySelectorAll('input')[1]
+    const slider = this.content.querySelectorAll('input')[1]
     slider.oninput = () => {
-      let sliderlabel = this.content.querySelectorAll('label')[2]
+      const sliderlabel = this.content.querySelectorAll('label')[2]
       sliderlabel.innerText = slider.value
     }
     canvas.addEventListener('mousedown', function (event) {
-      let mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
+      const mousepos = this.getMousePos(this.content.querySelectorAll('.Sheet')[0], event)
       this.draw(mousepos.x, mousepos.y)
       event.target.addEventListener('mousemove', this.mousemove)
       document.addEventListener('mouseup', this.mouseup)
@@ -49,8 +50,8 @@ export default class Paint extends PwdWindow {
   }
 
   draw (x, y) {
-    let canvas = this.content.querySelectorAll('.Sheet')[0]
-    let cx = canvas.getContext('2d')
+    const canvas = this.content.querySelectorAll('.Sheet')[0]
+    const cx = canvas.getContext('2d')
     cx.strokeStyle = this.content.querySelectorAll('input')[0].value
     cx.lineWidth = this.content.querySelectorAll('input')[1].value
     cx.beginPath()
@@ -63,15 +64,17 @@ export default class Paint extends PwdWindow {
     this.previousX = x
     this.previousY = y
   }
+
   getMousePos (canvas, evt) {
-    let rect = canvas.getBoundingClientRect()
+    const rect = canvas.getBoundingClientRect()
     return {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
     }
   }
+
   clear () {
-    let canvas = this.content.querySelectorAll('.Sheet')[0]
+    const canvas = this.content.querySelectorAll('.Sheet')[0]
     const context = canvas.getContext('2d')
     context.clearRect(0, 0, canvas.width, canvas.height)
   }
