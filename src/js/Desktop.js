@@ -1,4 +1,4 @@
-// import Chat from './Chat.js'	//deactivated until there is a working server again
+import Chat from './Chat.js'	// deactivated until there is a working server again
 import Memory from './Memory.js'
 import Paint from './Paint.js'
 import About from './About.js'
@@ -81,9 +81,9 @@ export default class Desktop {
       }
 
       // Chatbutton click
-      /* if (element.classList.contains('ChatButton')) {
-this.openWindow(new Chat(this.windows.length + 1))
-} */
+      if (element.classList.contains('ChatButton')) {
+        this.openWindow(new Chat(this.windows.length + 1))
+      }
       // Memory button click
       if (element.classList.contains('MemoryButton')) {
         this.openWindow(new Memory(this.windows.length + 1, 4, 4))

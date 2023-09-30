@@ -6,7 +6,7 @@ export default class Chat extends PwdWindow {
     this.width = '300'
     this.title = 'Chat application'
     this.iconUrl = new URL('../image/double-chat-sprite.png', import.meta.url)
-    this.socket = new window.WebSocket('ws://vhost3.lnu.se:20080/socket/')
+    this.socket = new window.WebSocket(process.env.CHAT_SERVER)
     this.channel = window.localStorage.getItem('channel')
     this.displayWindow()
     this.lastMessageDate = undefined
@@ -47,12 +47,15 @@ export default class Chat extends PwdWindow {
     container.querySelectorAll('input')[1].addEventListener('click', () => {
       textarea.value = textarea.value.trim()
       if (textarea.value !== '') {
+        if (this.channel === null) {
+          this.channel = ''
+        }
         const data = {
           type: 'message',
           data: textarea.value,
           username: window.localStorage.getItem('username'),
           channel: this.channel,
-          key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
+          key: process.env.CHAT_KEY
         }
         this.socket.send(JSON.stringify(data))
         textarea.value = ''
