@@ -5,7 +5,7 @@ This is a personal web desktop app that runs completely in the browser. I made i
 
 The desktop contains 3 applications that are opened in their own window when you click their icon. There is no limit to how many windows you can open. The visual design is heavily inspired by the looks of classic windows XP. However it slightly turned into something of its own once i started working on it.
 ## Update in progress
-I am currently working on updating this project, since some features, that were working when i initially created this project have outdated. Such as the server used for the chat app is no longer available for example. I am also doing some cleanups, improvements and trying to keep this project as documented as possible. Stay tuned!
+I am currently working on updating this project, since some features, that were working when i initially created this project have outdated. I am also doing some cleanups, improvements and trying to keep this project as documented as possible. Stay tuned!
 ## Installation for development
 Make sure node.js and npm is installed on your system.
 
