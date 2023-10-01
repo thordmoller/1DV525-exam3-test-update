@@ -9,13 +9,23 @@ The desktop contains 3 applications that are opened in their own window when you
 
 I'm committed to continually improving this personal web desktop app. Here are some of the upcoming changes and features I have in mind:
 
-### Features
+### User-Facing Features:
+1. #### Maximize Windows:
+* Enhance user experience by allowing them to maximize windows for better visibility and productivity.
+2. #### Alternate Theme:
+  * Give users the option to choose from an additional theme, personalizing their web desktop experience.
+3. #### Multi-User Interaction in Paint App:
+* Enable collaboration and interaction among users in the Paint app through websockets.
+4. #### Save Painted Images:
+* Provide the ability to save painted images to the user's computer or set them as wallpaper within the web desktop.
 
-* **Making the in-window-app code structure more modular and dynamic to simplify adding new apps.**
-* **Adding an alternate theme that users can choose.**
-* **adding multi-user interaction in the Paint app using websockets.**
-* **Adding an option to save painted images to the users computer or use them as wallpaper in the web-desktop.**
-* **Additional desktop apps**
+### Development Improvements:
+1. #### Code Modularity and Dynamic Structure:
+* Restructure the in-window app code to make it more modular and dynamic, simplifying the process of adding new apps.
+2. #### Expansion of Desktop Apps:
+* Continue to grow the selection of desktop applications, enhancing the functionality of the web desktop.
+3. #### Responsive Design for Mobile Devices:
+* Improve the app's usability on mobile devices by implementing additional styling and optimizations.
 
 Please note that this roadmap is subject to change as I receive feedback and explore new ideas. Your input is valuable, so if you have suggestions or feature requests, feel free to open an issue to share your thoughts!
 
