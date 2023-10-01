@@ -1,6 +1,6 @@
 import PwdWindow from './PwdWindow'
 
-import * as images from '../image/memory/*.png'	// manually import images used in the game
+import * as images from '../image/memory/*.png'// manually import images used in the game
 
 export default class Memory extends PwdWindow {
   constructor (id, rows, cols) {
@@ -13,22 +13,28 @@ export default class Memory extends PwdWindow {
     this.flipOne = undefined
     this.flipTwo = undefined
     this.pairs = 0
+
     this.click = function (e) {
       let target = e.target
+
       if (target.nodeName === 'A') {
         target = target.firstElementChild
       }
+
       if (target.classList.contains('MemoryImage') && !target.classList.contains('Removed')) {
         this.flipCard(target.getAttribute('card-number'), target.getAttribute('index'), target)
       }
+
       if (target.classList.contains('PlayAgain')) {
         this.content.innerHTML = ''
         this.newGame(this.rows, this.cols)
       }
     }.bind(this)
+
     this.keyDown = function (e) {
       if (document.activeElement.childNodes[0].classList.contains('MemoryImage')) {
         let activeIndex = parseInt(document.activeElement.querySelectorAll('.MemoryImage')[0].getAttribute('index'))
+
         if (e.keyCode === 37) {
           // left press
           if (activeIndex > 0) {
@@ -38,6 +44,7 @@ export default class Memory extends PwdWindow {
             activeIndex = this.content.lastChild.previousSibling.firstElementChild.getAttribute('index')
           }
         }
+
         if (e.keyCode === 39) {
           // right press
           if (activeIndex < (this.rows * this.cols) - 1) {
@@ -47,10 +54,12 @@ export default class Memory extends PwdWindow {
             activeIndex = this.content.firstElementChild.firstElementChild.getAttribute('index')
           }
         }
+
         if (e.keyCode === 38) {
           // up press
           activeIndex = this.upwardsIndex(activeIndex)
         }
+
         if (e.keyCode === 40) {
           // down press
           activeIndex = this.downwardsIndex(activeIndex)
@@ -78,7 +87,6 @@ export default class Memory extends PwdWindow {
     if (temp > (this.rows * this.cols) - 1) {
       temp = temp - (this.rows * this.cols)
     }
-    console.log(temp)
     return temp
   }
 
@@ -135,11 +143,11 @@ export default class Memory extends PwdWindow {
   }
 
   /**
-	 * Returns a shuffled version of provided array
-	 * The "Fisher-Yates algorithm"
-	 * inspired by: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
-	 * @param {*} array - array to be shuffled
-	 */
+* Returns a shuffled version of provided array
+* The "Fisher-Yates algorithm"
+* inspired by: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976
+* @param {*} array - array to be shuffled
+*/
   static shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
       // Pick a remaining element
@@ -159,7 +167,6 @@ export default class Memory extends PwdWindow {
     const object = { element, index, target }
     const unknownSrc = images[0]
     if (!this.flipOne || !this.flipTwo) {
-      console.log(element)
       target.setAttribute('src', images[element])
       if (!this.flipOne) {
         this.flipOne = object

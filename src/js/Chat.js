@@ -38,12 +38,10 @@ export default class Chat extends PwdWindow {
     const channelbutton = container.querySelectorAll('button')[0]
     container.querySelectorAll('input')[0].value = this.channel
     channelbutton.addEventListener('click', () => {
-      console.log('hej')
       const newChannel = this.content.querySelectorAll('input')[0].value
       window.localStorage.setItem('channel', newChannel)
       this.channel = newChannel
     })
-    console.log(channelbutton)
     container.querySelectorAll('input')[1].addEventListener('click', () => {
       textarea.value = textarea.value.trim()
       if (textarea.value !== '') {
