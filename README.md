@@ -4,8 +4,23 @@ This is a personal web desktop app that runs completely in the browser. I made i
 [Live Demo](https://thordmoller.github.io/personal-web-desktop/)
 
 The desktop contains 3 applications that are opened in their own window when you click their icon. There is no limit to how many windows you can open. The visual design is heavily inspired by the looks of classic windows XP. However it slightly turned into something of its own once i started working on it.
-## Update in progress
-I am currently working on updating this project, since some features, that were working when i initially created this project have outdated. I am also doing some cleanups, improvements and trying to keep this project as documented as possible. Stay tuned!
+
+## Upcoming Changes
+
+I'm committed to continually improving this personal web desktop app. Here are some of the upcoming changes and features I have in mind:
+
+### Features
+
+* **Making the in-window-app code structure more modular and dynamic to simplify adding new apps.**
+* **Adding an alternate theme that users can choose.**
+* **adding multi-user interaction in the Paint app using websockets.**
+* **Adding an option to save painted images to the users computer or use them as wallpaper in the web-desktop.**
+* **Additional desktop apps**
+
+Please note that this roadmap is subject to change as I receive feedback and explore new ideas. Your input is valuable, so if you have suggestions or feature requests, feel free to open an issue to share your thoughts!
+
+Stay tuned for more updates and improvements to this web desktop app.
+
 ## Installation for development
 Make sure node.js and npm is installed on your system.
 
