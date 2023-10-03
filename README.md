@@ -18,6 +18,8 @@ I'm committed to continually improving this personal web desktop app. Here are s
 * Enable collaboration and interaction among users in the Paint app through websockets.
 4. #### Save Painted Images:
 * Provide the ability to save painted images to the user's computer or set them as wallpaper within the web desktop.
+5. #### Chat App Enhancements:
+* Improved channel switching and a list of connected users for seamless chatting.
 
 ### Development Improvements:
 1. #### Code Modularity and Dynamic Structure:
